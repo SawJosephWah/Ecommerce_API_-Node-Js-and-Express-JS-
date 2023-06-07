@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "647a1593879d25a41e8c377a",
+    "name": "Aung Aung",
+    "phone": "09798585669",
+    "email": "a@gmail.com",
+    "password": "$2b$10$iMbQT3dM6vxa1bmNJa2YZ.lc0gtXuCMxXV7ZWJHY4d5xJ0N0PpS6O",
+    "roles": [],
+    "created_at": "2023-06-02T16:15:15.087Z",
+    "__v": 0
+  },
+  {
+    "_id": "647ab9773dd66afc8439cde0",
+    "name": "Jane Smith",
+    "phone": "9876543210",
+    "email": "jane@example.com",
+    "password": "$2b$10$Kq0n.mUEqQi9IZWLbPtkEuNEDcbMWhns4MBQ4FbvJTYIe5LkmCRO.",
+    "roles": [],
+    "created_at": "2023-06-03T03:54:31.508Z",
+    "__v": 0
+  },
+  {
+    "_id": "647ab9773dd66afc8439cde2",
+    "name": "John Doe",
+    "phone": "1234567890",
+    "email": "john@example.com",
+    "password": "$2b$10$VXzv5FIetuk.PY098j16pO4K06thKkG5yWC8h.N.KFXvBQzU0Bu.K",
+    "roles": [],
+    "created_at": "2023-06-03T03:54:31.516Z",
+    "__v": 0
+  }
+]

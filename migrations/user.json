@@ -1,0 +1,15 @@
+[
+    {
+      "name": "Owner",
+      "email": "owner@yopmail.com",
+      "phone": "0911111111",
+      "password": "00000000"
+    },
+    {
+      "name": "Manager",
+      "email": "manager@yopmail.com",
+      "phone": "0922222222",
+      "password": "00000000"
+    }
+  ]
+  
