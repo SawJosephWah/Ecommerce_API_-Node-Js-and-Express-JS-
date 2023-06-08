@@ -18,11 +18,13 @@ const permitRoutes = require('./Routes/permitRoutes');
 const roleRoutes = require('./Routes/roleRoutes');
 const userRoutes = require('./Routes/userRoutes');
 const categoryRoutes = require('./Routes/categoryRoutes');
+const subCategoryRoutes = require('./Routes/subCategoryRoutes');
 
 app.use('/permit', permitRoutes);
 app.use('/role', roleRoutes);
 app.use('/user', userRoutes);
 app.use('/category', categoryRoutes);
+app.use('/subcategory', subCategoryRoutes);
 
 
 // Error handling middleware

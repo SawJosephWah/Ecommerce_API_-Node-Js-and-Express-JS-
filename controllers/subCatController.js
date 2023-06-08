@@ -1,3 +1,4 @@
+const SubCatModel = require('../models/subcat');
 const CategoryModel = require('../models/category');
 const helper = require('../utils/helper');
 const path = require('path');
@@ -7,33 +8,40 @@ const rootDir = path.resolve(__dirname, '..');
 const add = async (req, res, next) => {
     const name = req.body.name;
     const image = req.imageName;
-    let checkAlreadyExists = await CategoryModel.findOne({ name });
-    if (checkAlreadyExists) {
-        return res.json({ status: false, msg: "Category name already exists" });
+    const catId = req.body.cat_id;
+
+    let category = await CategoryModel.findById(catId);
+    if (!category) {
+        return res.json({ status: false, msg: "Category not found" });
     }
 
-    await new CategoryModel({ name, image }).save();
-    res.status(200).json({ status: true, msg: 'Category created successfully' });
+    let newSubCategory = await new SubCatModel({ name, image, catId }).save();
+
+    await CategoryModel.findByIdAndUpdate(
+        catId,
+        { $push: { subcats: newSubCategory._id } }
+    );
+    res.status(200).json({ status: true, msg: 'Sub Category created successfully' });
 }
 
 const all = async (req, res, next) => {
     try {
-        const categories = await CategoryModel.find().populate({
-            path: 'subcats',
-            select: 'name childs',
-        });;
-        const categoriesWithImageUrl = categories.map((category) => {
+        const subCategories = await SubCatModel.find().populate({
+            path: 'catId',
+            select: 'name',
+        });
+        const subCategoriesWithImageUrl = subCategories.map((category) => {
             return {
                 _id: category._id,
                 name: category.name,
-                subcats: category.subcats,
-                imageUrl: helper.generateCategoryImageUrl(req, category.image)
+                catId: category.catId,
+                imageUrl: helper.generateSubCategoryImageUrl(req, category.image)
             };
         });
-        res.status(200).json({ status: true, data: categoriesWithImageUrl });
+        res.status(200).json({ status: true, data: subCategoriesWithImageUrl });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ status: false, message: 'Failed to fetch categories' });
+        res.status(500).json({ status: false, message: 'Failed to fetch subcategories' });
     }
 }
 

@@ -3,9 +3,9 @@ const router = express.Router();
 const commonValidator = require('../validators/commonValidator');
 const categoryValidator = require('../validators/CategoryValidator');
 const helper = require('../utils/helper');
-const controller = require('../controllers/categoryController');
+const controller = require('../controllers/subCatController');
 
-router.post('/store', commonValidator.checkToken, commonValidator.validateMultiplePermits(["Create_category"]), categoryValidator.categoryAlreadyExists, helper.singleImageUpload('category'), controller.add);
+router.post('/store', commonValidator.checkToken, helper.singleImageUpload('subcategory'), controller.add);
 router.get('/all', controller.all);
 
 router.route('/:id')
