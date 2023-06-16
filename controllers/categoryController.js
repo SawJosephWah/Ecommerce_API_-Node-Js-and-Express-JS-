@@ -21,7 +21,11 @@ const all = async (req, res, next) => {
         const categories = await CategoryModel.find().populate({
             path: 'subcats',
             select: 'name childs',
-        });;
+            populate: {
+                path: 'childs',
+                select: 'name'
+            }
+        });
         const categoriesWithImageUrl = categories.map((category) => {
             return {
                 _id: category._id,
@@ -40,6 +44,14 @@ const all = async (req, res, next) => {
 const get = async (req, res) => {
     try {
         const category = await CategoryModel.findById(req.params.id)
+        .populate({
+            path: 'subcats',
+            select: 'name childs',
+            populate: {
+                path: 'childs',
+                select: 'name'
+            }
+        });
         if (!category) {
             res.status(200).json({ status: false, msg: "Category not found" });
         }

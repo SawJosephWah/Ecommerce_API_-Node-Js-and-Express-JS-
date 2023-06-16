@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const commonValidator = require('../validators/commonValidator');
-const categoryValidator = require('../validators/CategoryValidator');
 const helper = require('../utils/helper');
 const controller = require('../controllers/subCatController');
 
@@ -10,7 +9,7 @@ router.get('/all', controller.all);
 
 router.route('/:id')
     .get(commonValidator.checkObjectId, controller.get)
-    .delete(commonValidator.checkObjectId, controller.deleteCategory)
-    .patch(commonValidator.checkObjectId, helper.singleFileUpload, controller.update)
+    .delete(commonValidator.checkObjectId, controller.deleteSubCategory)
+    .patch(commonValidator.checkObjectId, helper.singleImageUpload("subcategory"), controller.update)
 
 module.exports = router;

@@ -19,12 +19,24 @@ const roleRoutes = require('./Routes/roleRoutes');
 const userRoutes = require('./Routes/userRoutes');
 const categoryRoutes = require('./Routes/categoryRoutes');
 const subCategoryRoutes = require('./Routes/subCategoryRoutes');
+const childCategoryRoutes = require('./Routes/childCategoryRoutes');
+const tagRoutes = require('./Routes/tagRoutes');
+const deliveryRoutes = require('./Routes/deliveryRoutes');
+const warrentyRoutes = require('./Routes/warrentyRoute');
+const productRoutes = require('./Routes/productRoutes');
+const orderRoutes = require('./Routes/orderRoutes');
 
 app.use('/permit', permitRoutes);
 app.use('/role', roleRoutes);
 app.use('/user', userRoutes);
 app.use('/category', categoryRoutes);
 app.use('/subcategory', subCategoryRoutes);
+app.use('/childcategory', childCategoryRoutes);
+app.use('/tag', tagRoutes);
+app.use('/delivery', deliveryRoutes);
+app.use('/warrenty', warrentyRoutes);
+app.use('/product', productRoutes);
+app.use('/order', orderRoutes);
 
 
 // Error handling middleware
